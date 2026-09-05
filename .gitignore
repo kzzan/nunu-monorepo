@@ -1,0 +1,8 @@
+storage/logs
+.idea
+*.log
+deploy/admin/docker-compose/conf
+deploy/admin/docker-compose/data
+storage/nunu-test.db
+.playwright-mcp
+.omo

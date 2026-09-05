@@ -1,0 +1,17 @@
+env: prod
+http:
+  host: 0.0.0.0
+  port: 8081
+site:
+  title: Home App
+  headline: Public-facing shell for the production home experience.
+log:
+  log_level: info
+  mode: file
+  encoding: json
+  log_file_name: "./storage/logs/home.log"
+  max_backups: 30
+  max_age: 7
+  max_size: 1024
+  compress: true
+

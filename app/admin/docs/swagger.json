@@ -1,0 +1,1828 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Admin API for the nunu layout monorepo.",
+        "title": "Nunu Layout Admin API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "/",
+    "paths": {
+        "/v1/admin/api": {
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "更新API信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "API模块"
+                ],
+                "summary": "更新API",
+                "parameters": [
+                    {
+                        "description": "参数",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.ApiUpdateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "创建新的API",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "API模块"
+                ],
+                "summary": "创建API",
+                "parameters": [
+                    {
+                        "description": "参数",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.ApiCreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "删除指定API",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "API模块"
+                ],
+                "summary": "删除API",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "API ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/apis": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "获取API列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "API模块"
+                ],
+                "summary": "获取API列表",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "每页数量",
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "API分组",
+                        "name": "group",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "API名称",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "API路径",
+                        "name": "path",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "请求方法",
+                        "name": "method",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetApisResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/menu": {
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "更新菜单信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "菜单模块"
+                ],
+                "summary": "更新菜单",
+                "parameters": [
+                    {
+                        "description": "参数",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.MenuUpdateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "创建新的菜单",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "菜单模块"
+                ],
+                "summary": "创建菜单",
+                "parameters": [
+                    {
+                        "description": "参数",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.MenuCreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "删除指定菜单",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "菜单模块"
+                ],
+                "summary": "删除菜单",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "菜单ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/menus": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "获取管理员菜单列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "菜单模块"
+                ],
+                "summary": "获取管理员菜单",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetMenuResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/role": {
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "更新角色信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "角色模块"
+                ],
+                "summary": "更新角色",
+                "parameters": [
+                    {
+                        "description": "参数",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.RoleUpdateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "创建新的角色",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "角色模块"
+                ],
+                "summary": "创建角色",
+                "parameters": [
+                    {
+                        "description": "参数",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.RoleCreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "删除指定角色",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "角色模块"
+                ],
+                "summary": "删除角色",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "角色ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/role/permissions": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "获取指定角色的权限列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "权限模块"
+                ],
+                "summary": "获取角色权限",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "角色名称",
+                        "name": "role",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetRolePermissionsData"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "更新指定角色的权限列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "权限模块"
+                ],
+                "summary": "更新角色权限",
+                "parameters": [
+                    {
+                        "description": "参数",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.UpdateRolePermissionRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/roles": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "获取角色列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "角色模块"
+                ],
+                "summary": "获取角色列表",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "每页数量",
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "角色ID",
+                        "name": "sid",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "角色名称",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetRolesResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/user": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户模块"
+                ],
+                "summary": "获取管理用户信息",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetAdminUserResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "更新管理员用户信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户模块"
+                ],
+                "summary": "更新管理员用户",
+                "parameters": [
+                    {
+                        "description": "参数",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.AdminUserUpdateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "创建新的管理员用户",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户模块"
+                ],
+                "summary": "创建管理员用户",
+                "parameters": [
+                    {
+                        "description": "参数",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.AdminUserCreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "删除指定管理员用户",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户模块"
+                ],
+                "summary": "删除管理员用户",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "用户ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/user/permissions": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "获取当前用户的权限列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "权限模块"
+                ],
+                "summary": "获取用户权限",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetUserPermissionsData"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/users": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "获取管理员用户列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户模块"
+                ],
+                "summary": "获取管理员用户列表",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "每页数量",
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "用户ID",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "用户名",
+                        "name": "username",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "昵称",
+                        "name": "nickname",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "手机号",
+                        "name": "phone",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "邮箱",
+                        "name": "email",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetAdminUsersResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/login": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户模块"
+                ],
+                "summary": "账号登录",
+                "parameters": [
+                    {
+                        "description": "params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.LoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.LoginResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/menus": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "获取当前用户的菜单列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "菜单模块"
+                ],
+                "summary": "获取用户菜单",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetMenuResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "v1.AdminUserCreateRequest": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "1234@gmail.com"
+                },
+                "nickname": {
+                    "type": "string",
+                    "example": "小Baby"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "123456"
+                },
+                "phone": {
+                    "type": "string",
+                    "example": "1858888888"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        ""
+                    ]
+                },
+                "username": {
+                    "type": "string",
+                    "example": "张三"
+                }
+            }
+        },
+        "v1.AdminUserDataItem": {
+            "type": "object",
+            "required": [
+                "email",
+                "nickname",
+                "password",
+                "username"
+            ],
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "1234@gmail.com"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "nickname": {
+                    "type": "string",
+                    "example": "小Baby"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "123456"
+                },
+                "phone": {
+                    "type": "string",
+                    "example": "1858888888"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        ""
+                    ]
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string",
+                    "example": "张三"
+                }
+            }
+        },
+        "v1.AdminUserUpdateRequest": {
+            "type": "object",
+            "required": [
+                "username"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "1234@gmail.com"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "nickname": {
+                    "type": "string",
+                    "example": "小Baby"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "123456"
+                },
+                "phone": {
+                    "type": "string",
+                    "example": "1858888888"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        ""
+                    ]
+                },
+                "username": {
+                    "type": "string",
+                    "example": "张三"
+                }
+            }
+        },
+        "v1.ApiCreateRequest": {
+            "type": "object",
+            "required": [
+                "group",
+                "method",
+                "name",
+                "path"
+            ],
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "example": "权限管理/菜单"
+                },
+                "menuIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "method": {
+                    "type": "string",
+                    "example": "GET"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "菜单列表"
+                },
+                "path": {
+                    "type": "string",
+                    "example": "/v1/test"
+                }
+            }
+        },
+        "v1.ApiDataItem": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "group": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "menuIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "method": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.ApiUpdateRequest": {
+            "type": "object",
+            "required": [
+                "group",
+                "id",
+                "method",
+                "name",
+                "path"
+            ],
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "example": "权限管理/菜单"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "menuIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "method": {
+                    "type": "string",
+                    "example": "GET"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "菜单列表"
+                },
+                "path": {
+                    "type": "string",
+                    "example": "/v1/test"
+                }
+            }
+        },
+        "v1.GetAdminUserResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/v1.GetAdminUserResponseData"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.GetAdminUserResponseData": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "1234@gmail.com"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "nickname": {
+                    "type": "string",
+                    "example": "小Baby"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "123456"
+                },
+                "phone": {
+                    "type": "string",
+                    "example": "1858888888"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        ""
+                    ]
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string",
+                    "example": "张三"
+                }
+            }
+        },
+        "v1.GetAdminUsersResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/v1.GetAdminUsersResponseData"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.GetAdminUsersResponseData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.AdminUserDataItem"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v1.GetApisResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/v1.GetApisResponseData"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.GetApisResponseData": {
+            "type": "object",
+            "properties": {
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.ApiDataItem"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v1.GetMenuResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/v1.GetMenuResponseData"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.GetMenuResponseData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.MenuDataItem"
+                    }
+                }
+            }
+        },
+        "v1.GetRolePermissionsData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "v1.GetRolesResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/v1.GetRolesResponseData"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.GetRolesResponseData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.RoleDataItem"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v1.GetUserPermissionsData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "v1.LoginRequest": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "example": "123456"
+                },
+                "username": {
+                    "type": "string",
+                    "example": "1234@gmail.com"
+                }
+            }
+        },
+        "v1.LoginResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/v1.LoginResponseData"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.LoginResponseData": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.MenuAuthDataItem": {
+            "type": "object",
+            "properties": {
+                "authMark": {
+                    "description": "权限标识",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "权限名称",
+                    "type": "string"
+                }
+            }
+        },
+        "v1.MenuCreateRequest": {
+            "type": "object",
+            "required": [
+                "name",
+                "path",
+                "title"
+            ],
+            "properties": {
+                "activePath": {
+                    "description": "激活菜单路径",
+                    "type": "string"
+                },
+                "authList": {
+                    "description": "按钮权限列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.MenuAuthDataItem"
+                    }
+                },
+                "component": {
+                    "description": "绑定的组件",
+                    "type": "string"
+                },
+                "fixedTab": {
+                    "description": "是否固定标签页",
+                    "type": "boolean"
+                },
+                "hideInMenu": {
+                    "description": "兼容旧版隐藏菜单字段",
+                    "type": "boolean"
+                },
+                "icon": {
+                    "description": "图标，使用字符串表示",
+                    "type": "string"
+                },
+                "isEnable": {
+                    "description": "是否启用",
+                    "type": "boolean"
+                },
+                "isFullPage": {
+                    "description": "是否全屏页面",
+                    "type": "boolean"
+                },
+                "isHide": {
+                    "description": "是否隐藏菜单",
+                    "type": "boolean"
+                },
+                "isHideTab": {
+                    "description": "是否隐藏标签页",
+                    "type": "boolean"
+                },
+                "isIframe": {
+                    "description": "是否 iframe",
+                    "type": "boolean"
+                },
+                "isMenu": {
+                    "description": "是否菜单",
+                    "type": "boolean"
+                },
+                "keepAlive": {
+                    "description": "是否保活",
+                    "type": "boolean"
+                },
+                "link": {
+                    "description": "外部链接",
+                    "type": "string"
+                },
+                "locale": {
+                    "description": "本地化标识",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "同路由中的name，唯一标识",
+                    "type": "string"
+                },
+                "parentId": {
+                    "description": "父级菜单的id，使用整数表示",
+                    "type": "integer"
+                },
+                "path": {
+                    "description": "地址",
+                    "type": "string"
+                },
+                "redirect": {
+                    "description": "重定向地址",
+                    "type": "string"
+                },
+                "roles": {
+                    "description": "角色权限",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "showBadge": {
+                    "description": "是否显示徽章",
+                    "type": "boolean"
+                },
+                "showTextBadge": {
+                    "description": "文本徽章",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "外链打开方式",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "展示名称",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "iframe模式下的跳转url，不能与path重复",
+                    "type": "string"
+                },
+                "weight": {
+                    "description": "排序权重",
+                    "type": "integer"
+                }
+            }
+        },
+        "v1.MenuDataItem": {
+            "type": "object",
+            "properties": {
+                "activePath": {
+                    "description": "激活菜单路径",
+                    "type": "string"
+                },
+                "authList": {
+                    "description": "按钮权限列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.MenuAuthDataItem"
+                    }
+                },
+                "component": {
+                    "description": "绑定的组件",
+                    "type": "string"
+                },
+                "fixedTab": {
+                    "description": "是否固定标签页",
+                    "type": "boolean"
+                },
+                "hideInMenu": {
+                    "description": "兼容旧版隐藏菜单字段",
+                    "type": "boolean"
+                },
+                "icon": {
+                    "description": "图标，使用字符串表示",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "唯一id，使用整数表示",
+                    "type": "integer"
+                },
+                "isEnable": {
+                    "description": "是否启用",
+                    "type": "boolean"
+                },
+                "isFullPage": {
+                    "description": "是否全屏页面",
+                    "type": "boolean"
+                },
+                "isHide": {
+                    "description": "是否隐藏菜单",
+                    "type": "boolean"
+                },
+                "isHideTab": {
+                    "description": "是否隐藏标签页",
+                    "type": "boolean"
+                },
+                "isIframe": {
+                    "description": "是否 iframe",
+                    "type": "boolean"
+                },
+                "isMenu": {
+                    "description": "是否菜单",
+                    "type": "boolean"
+                },
+                "keepAlive": {
+                    "description": "是否保活",
+                    "type": "boolean"
+                },
+                "link": {
+                    "description": "外部链接",
+                    "type": "string"
+                },
+                "locale": {
+                    "description": "本地化标识",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "同路由中的name，唯一标识",
+                    "type": "string"
+                },
+                "parentId": {
+                    "description": "父级菜单的id，使用整数表示",
+                    "type": "integer"
+                },
+                "path": {
+                    "description": "地址",
+                    "type": "string"
+                },
+                "redirect": {
+                    "description": "重定向地址",
+                    "type": "string"
+                },
+                "roles": {
+                    "description": "角色权限",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "showBadge": {
+                    "description": "是否显示徽章",
+                    "type": "boolean"
+                },
+                "showTextBadge": {
+                    "description": "文本徽章",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "外链打开方式",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "展示名称",
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "description": "更新时间",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "iframe模式下的跳转url，不能与path重复",
+                    "type": "string"
+                },
+                "weight": {
+                    "description": "排序权重",
+                    "type": "integer"
+                }
+            }
+        },
+        "v1.MenuUpdateRequest": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "path",
+                "title"
+            ],
+            "properties": {
+                "activePath": {
+                    "description": "激活菜单路径",
+                    "type": "string"
+                },
+                "authList": {
+                    "description": "按钮权限列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.MenuAuthDataItem"
+                    }
+                },
+                "component": {
+                    "description": "绑定的组件",
+                    "type": "string"
+                },
+                "fixedTab": {
+                    "description": "是否固定标签页",
+                    "type": "boolean"
+                },
+                "hideInMenu": {
+                    "description": "兼容旧版隐藏菜单字段",
+                    "type": "boolean"
+                },
+                "icon": {
+                    "description": "图标，使用字符串表示",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "唯一id，使用整数表示",
+                    "type": "integer"
+                },
+                "isEnable": {
+                    "description": "是否启用",
+                    "type": "boolean"
+                },
+                "isFullPage": {
+                    "description": "是否全屏页面",
+                    "type": "boolean"
+                },
+                "isHide": {
+                    "description": "是否隐藏菜单",
+                    "type": "boolean"
+                },
+                "isHideTab": {
+                    "description": "是否隐藏标签页",
+                    "type": "boolean"
+                },
+                "isIframe": {
+                    "description": "是否 iframe",
+                    "type": "boolean"
+                },
+                "isMenu": {
+                    "description": "是否菜单",
+                    "type": "boolean"
+                },
+                "keepAlive": {
+                    "description": "是否保活",
+                    "type": "boolean"
+                },
+                "link": {
+                    "description": "外部链接",
+                    "type": "string"
+                },
+                "locale": {
+                    "description": "本地化标识",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "同路由中的name，唯一标识",
+                    "type": "string"
+                },
+                "parentId": {
+                    "description": "父级菜单的id，使用整数表示",
+                    "type": "integer"
+                },
+                "path": {
+                    "description": "地址",
+                    "type": "string"
+                },
+                "redirect": {
+                    "description": "重定向地址",
+                    "type": "string"
+                },
+                "roles": {
+                    "description": "角色权限",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "showBadge": {
+                    "description": "是否显示徽章",
+                    "type": "boolean"
+                },
+                "showTextBadge": {
+                    "description": "文本徽章",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "外链打开方式",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "展示名称",
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "url": {
+                    "description": "iframe模式下的跳转url，不能与path重复",
+                    "type": "string"
+                },
+                "weight": {
+                    "description": "排序权重",
+                    "type": "integer"
+                }
+            }
+        },
+        "v1.Response": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {},
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.RoleCreateRequest": {
+            "type": "object",
+            "required": [
+                "name",
+                "sid"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Admin"
+                },
+                "sid": {
+                    "type": "string",
+                    "example": "1"
+                }
+            }
+        },
+        "v1.RoleDataItem": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "sid": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.RoleUpdateRequest": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "sid"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Admin"
+                },
+                "sid": {
+                    "type": "string",
+                    "example": "1"
+                }
+            }
+        },
+        "v1.UpdateRolePermissionRequest": {
+            "type": "object",
+            "required": [
+                "role"
+            ],
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        ""
+                    ]
+                },
+                "role": {
+                    "type": "string",
+                    "example": "admin"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
